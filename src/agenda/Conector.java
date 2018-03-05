@@ -108,19 +108,19 @@ import org.sqlite.SQLiteDataSource;
     }
        
     //CODIGO QUE INSERTA CORREO  
-    public void insertar(Usuarios p){
+    //public void insertar(Usuarios p){
     //public String insertarUsuarios(Usuarios p){  
-    /*public int insertagenda(int userId, String userMails, String userEmails){*/
+    public int insertarUsuarios(int userId, String userMail, String userName){
         conn = connectDB();
-        String query = " insert into user +"
+        String query = " insert into Calendar +"
                 + "(userId, userEmail, userName)" + 
                 " values (?,?,?) ";
         PreparedStatement preStmt =null;
         try {
             preStmt = conn.prepareStatement(query);
-            preStmt.setInt(1, p.getUserId());
-            preStmt.setString(2, p.getUserEmail());
-            preStmt.setString(3, p.getUserName());
+            preStmt.setInt(1, userId);
+            preStmt.setString(2, userMail);
+            preStmt.setString(3, userName);
 
            
             
@@ -147,8 +147,9 @@ import org.sqlite.SQLiteDataSource;
                 e.printStackTrace();
             }
         }
-        //return 0;
+        return 0;
         //return null;
+        
     
     }
 }

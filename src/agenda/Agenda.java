@@ -60,9 +60,9 @@ public class Agenda {
                     String email = leer.nextLine();
                     System.out.println(email);
                     //stem.out.println(menu.getUseremails(Useremails);*/
-                     Usuarios p1 = new Usuarios(2,"c.williams@hotmail.com","Carlos Williams");
+                     //Usuarios p1 = new Usuarios(2,"c.williams@hotmail.com","Carlos Williams");
                      Conector cn = new Conector();
-                     cn.insertar(p1);
+                     cn.insertarUsuarios(2,"c.williams@hotmail.com","Carlos Williams");
                     
                     break;
                 //default:
