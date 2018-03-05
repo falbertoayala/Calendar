@@ -65,7 +65,7 @@ public class Agenda {
                      cn.insertar(p1);
                     
                     break;
-                default:
+                //default:
             }
             
         }while(opcion!=4);

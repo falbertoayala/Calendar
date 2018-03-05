@@ -22,17 +22,12 @@ public class Menu {
         System.out.println("-----------------------------");
         System.out.println("1.- Ingresa Correo.");
         System.out.println("2.- Ver Correos.");
-        System.out.println("3.- Ver Agenda ");
+        System.out.println("3.- Prueba deIngreso ");
         System.out.println("4.- Salir.");
         System.out.println("-----------------------------");
         int codigo = s.nextInt();
               
-        /*
-        1:
-        emails e = new emails();
-        e.insertagenda(3, "Usermails", "Namemails");
-
-        */
+       
     }
     public void imprimircorreo(){
         System.out.println("-----------------------------");
@@ -58,8 +53,16 @@ public class Menu {
         Conector emp = new Conector();
         String resultado =emp.getInformacionTablauser(Useremails);
         return resultado;
+        
+      }
+    
+    /*public String Useremails(){
+        Conector ing = new Conector();
+        String ingreso = ing.insertarUsuarios(p);
+        return ingreso;
+         
        
-    }
+    }*/
     
     
 }
