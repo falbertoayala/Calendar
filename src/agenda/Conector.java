@@ -90,11 +90,11 @@ import org.sqlite.SQLiteDataSource;
         try{
             consulta = conn.prepareStatement(query);
             resultadotabla = consulta.executeQuery();
-            tabla.append("userId|\tCorreo\n");
+            tabla.append("userId|\tCorreo|\tNombre \n");
             while (resultadotabla.next()){
                 tabla.append(resultadotabla.getInt(1)).append("\t");
                 tabla.append(resultadotabla.getString(2)).append("\t");
-                tabla.append(resultadotabla.getString(3)).append("\t");
+                tabla.append(resultadotabla.getString(3)).append("\t \n");
             }
             return tabla.toString();
         } catch (SQLException ex) {

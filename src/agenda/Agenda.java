@@ -19,14 +19,16 @@ public class Agenda {
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        
-         int opcion =0;
-        Scanner leer = new Scanner (System.in);
+
+        int opcion = 0;
+        Scanner leer = new Scanner(System.in);
         Menu menu = new Menu();
         Menu menu2 = new Menu();
+
         String ckmail = "";
         String correo = "";
         String nombre = "";
+        String datos = "";
         System.out.println("B I E N V E N I D O   A   T U   A G E N D A   E L E C T R O N I C A");
         System.out.println("********************************************************************");
         System.out.print("Ingrese su correo: ");
@@ -36,44 +38,31 @@ public class Agenda {
             menu.imprimirMenu();
             System.out.print("Ingrese codigo>> ");
             opcion = leer.nextInt();
-            switch (opcion){
+            switch (opcion) {
                 case 1:
-                   
                     
-                    do{
-                    menu2.imprimircorreo();
-                    correo = leer.nextLine();
-                    System.out.println("Ingrese sus datos");
-                    System.out.print("Nombre correo : ");
-                    correo = leer.nextLine();
-                    System.out.print("Nombre : ");
-                    nombre = leer.nextLine();
+                    Conector cn = new Conector();
+                    System.out.println("Ingrese Id :");
+                    int id = leer.nextInt();
+                    System.out.println("Ingrese Email :");
+                    String email = leer.next();
+                    System.out.println("Ingrese su Nombre :");
+                    String name = leer.next();
+                    cn.insertarUsuarios(id, email, name);
+                    //cn.insertarUsuarios(2,"c.williams@hotmail.com","Carlos Williams")
                     break;
-                    }while(opcion !=4);
-                    
                     
                 case 2:
                     System.out.println(menu.getAllEmails());
                     break;
                 case 3:
-                    /*System.out.print("Ingrese Correo ");
-                    String email = leer.nextLine();
-                    System.out.println(email);
-                    //stem.out.println(menu.getUseremails(Useremails);*/
-                     //Usuarios p1 = new Usuarios(2,"c.williams@hotmail.com","Carlos Williams");
-                     Conector cn = new Conector();
-                     cn.insertarUsuarios(2,"c.williams@hotmail.com","Carlos Williams");
-                    
+
                     break;
-                //default:
+
             }
-            
-        }while(opcion!=4);
+
+        } while (opcion != 4);
         
-        
-       
-        
-       
-        
+
     }
 }
