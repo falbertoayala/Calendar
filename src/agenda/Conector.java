@@ -112,7 +112,7 @@ import org.sqlite.SQLiteDataSource;
     //public String insertarUsuarios(Usuarios p){  
     public int insertarUsuarios(int userId, String userMail, String userName){
         conn = connectDB();
-        String query = " insert into Calendar +"
+        String query = " insert into user "
                 + "(userId, userEmail, userName)" + 
                 " values (?,?,?) ";
         PreparedStatement preStmt =null;
