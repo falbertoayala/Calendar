@@ -31,8 +31,10 @@ public class Agenda {
         String datos = "";
         System.out.println("B I E N V E N I D O   A   T U   A G E N D A   E L E C T R O N I C A");
         System.out.println("********************************************************************");
+        Conector ck = new Conector();
         System.out.print("Ingrese su correo: ");
         ckmail = leer.next();
+        System.out.println("Su correo es Valido" + menu.getUseremails());
         
         do {
             menu.imprimirMenu();

@@ -53,14 +53,14 @@ public class Menu {
         return resultado;
         
       }
+    public String getUseremails(){
+        Conector emp = new Conector();
+        String resultado = emp.getCorreoTablauser(user);
+        return resultado;
+        
     
-    /*public String Useremails(){
-        Conector ing = new Conector();
-        String ingreso = ing.insertarUsuarios(p);
-        return ingreso;
-         
-       
-    }*/
+    }
+   
     
     
 }

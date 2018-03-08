@@ -79,6 +79,34 @@ import org.sqlite.SQLiteDataSource;
         return tabla.toString();
     }
     
+    //COnsulta existencia de correo
+    
+    public String getCorreoTablauser(String user){
+        
+        conn = connectDB();
+        String query = "select * from user where userEmail = ?";
+        PreparedStatement consulta = null;
+        ResultSet resultadotabla = null;
+        String w = "";
+        StringBuilder tabla = new StringBuilder(w);
+        
+        try{
+            consulta = conn.prepareStatement(query);
+            consulta.setString(1, user);
+            resultadotabla = consulta.executeQuery();
+            tabla.append("user|\tCorreo\n");
+            while (resultadotabla.next()){
+                tabla.append(resultadotabla.getInt(1)).append("\t");
+                tabla.append(resultadotabla.getString(2)).append("\t");
+                tabla.append(resultadotabla.getDouble(3)).append("\n");
+            }
+            return tabla.toString();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tabla.toString();
+    }
+    
     public String getInformacionTablauser(){
         conn = connectDB();
         String query = " select * from user";
