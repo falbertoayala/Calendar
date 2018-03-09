@@ -81,30 +81,29 @@ import org.sqlite.SQLiteDataSource;
     
     //COnsulta existencia de correo
     
-    public String getCorreoTablauser(String user){
+    public boolean getCorreoTablauser(String user){
         
         conn = connectDB();
-        String query = "select * from user where userEmail = ?";
+        String query = "select  userEmail from user ";
         PreparedStatement consulta = null;
         ResultSet resultadotabla = null;
-        String w = "";
-        StringBuilder tabla = new StringBuilder(w);
+        //String w = "";
+        //StringBuilder tabla = new StringBuilder(w);
         
         try{
             consulta = conn.prepareStatement(query);
-            consulta.setString(1, user);
             resultadotabla = consulta.executeQuery();
-            tabla.append("user|\tCorreo\n");
-            while (resultadotabla.next()){
-                tabla.append(resultadotabla.getInt(1)).append("\t");
-                tabla.append(resultadotabla.getString(2)).append("\t");
-                tabla.append(resultadotabla.getDouble(3)).append("\n");
+                while (resultadotabla.next()){
+                if(user.equals(resultadotabla.getString(1))){
+                    return  true ;
+                }
+
             }
-            return tabla.toString();
+            
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return tabla.toString();
+        return false;
     }
     
     public String getInformacionTablauser(){
@@ -136,17 +135,17 @@ import org.sqlite.SQLiteDataSource;
     }
        
     //CODIGO QUE INSERTA CORREO  
-    //public void insertar(Usuarios p){
-    //public String insertarUsuarios(Usuarios p){  
-    public int insertarUsuarios(int userId, String userMail, String userName){
+    
+    public int insertarUsuarios(String userMail, String userName){
         conn = connectDB();
         String query = " insert into user "
-                + "(userId, userEmail, userName)" + 
-                " values (?,?,?) ";
+                + "(userEmail, userName)" + 
+                " values (?,?) ";
         PreparedStatement preStmt =null;
         try {
             preStmt = conn.prepareStatement(query);
-            preStmt.setInt(1, userId);
+            
+            //preStmt.setInt(1, userId);
             preStmt.setString(2, userMail);
             preStmt.setString(3, userName);
 

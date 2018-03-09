@@ -34,7 +34,9 @@ public class Agenda {
         Conector ck = new Conector();
         System.out.print("Ingrese su correo: ");
         ckmail = leer.next();
-        System.out.println("Su correo es Valido" + menu.getUseremails());
+        menu.getMailuser(ckmail);
+        
+        
         
         do {
             menu.imprimirMenu();
@@ -44,14 +46,15 @@ public class Agenda {
                 case 1:
                     
                     Conector cn = new Conector();
-                    System.out.println("Ingrese Id :");
-                    int id = leer.nextInt();
+                   
+                    leer.nextLine();
+                    int id = '0';
                     System.out.println("Ingrese Email :");
-                    String email = leer.next();
-                    System.out.println("Ingrese su Nombre :");
-                    String name = leer.next();
-                    cn.insertarUsuarios(id, email, name);
-                    //cn.insertarUsuarios(2,"c.williams@hotmail.com","Carlos Williams")
+                    String email = leer.nextLine();
+                    System.out.print("Ingrese su Nombre :");
+                    String name = leer.nextLine();
+                    cn.insertarUsuarios(email, name);
+                    
                     break;
                     
                 case 2:

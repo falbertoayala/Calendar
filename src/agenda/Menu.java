@@ -18,7 +18,7 @@ public class Menu {
     }
     
     public void imprimirMenu(){
-        System.out.println("A G E N D A   E L E C T R O N I C A");
+        System.out.println("I N G R E S O   D E   N U E V O   U S U A R I O");
         System.out.println("-----------------------------");
         System.out.println("1.- Ingresa Correo.");
         System.out.println("2.- Ver Correos.");
@@ -53,9 +53,9 @@ public class Menu {
         return resultado;
         
       }
-    public String getUseremails(){
+    public boolean getMailuser(String ckmail){
         Conector emp = new Conector();
-        String resultado = emp.getCorreoTablauser(user);
+        boolean resultado = emp.getCorreoTablauser(ckmail);
         return resultado;
         
     
