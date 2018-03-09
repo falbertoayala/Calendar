@@ -20,19 +20,20 @@ public class Menu {
     public void imprimirMenu(){
         System.out.println("I N G R E S O   D E   N U E V O   U S U A R I O");
         System.out.println("-----------------------------");
-        System.out.println("1.- Ingresa Correo.");
-        System.out.println("2.- Ver Correos.");
-        System.out.println("3.- INgresar");
-        System.out.println("4.- Salir.");
+        System.out.println("1.- Ingresa Nuevo Usuario.");
         System.out.println("-----------------------------");
+                
         int codigo = s.nextInt();
               
        
     }
-    public void imprimircorreo(){
+    public void imprimirMenuPrincipal(){
         System.out.println("-----------------------------");
-        System.out.println("Ingresar Usuario.");
-        System.out.println("4.- Salir.");
+        System.out.println("M E N U  P R I N C I P A L");
+        System.out.println("1.) Ver Correos de Usuarios");
+        System.out.println("2.) Ingresar Evento");
+        System.out.println("3.) Consultar Evento");
+        System.out.println("4.) Salir");
         System.out.println("-----------------------------");
         //int codigo = s.nextInt();
               

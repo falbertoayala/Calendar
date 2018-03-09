@@ -146,8 +146,8 @@ import org.sqlite.SQLiteDataSource;
             preStmt = conn.prepareStatement(query);
             
             //preStmt.setInt(1, userId);
-            preStmt.setString(2, userMail);
-            preStmt.setString(3, userName);
+            preStmt.setString(1, userMail);
+            preStmt.setString(2, userName);
 
            
             

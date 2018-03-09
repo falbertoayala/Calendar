@@ -46,7 +46,6 @@ public class Agenda {
                 case 1:
                     
                     Conector cn = new Conector();
-                   
                     leer.nextLine();
                     int id = '0';
                     System.out.println("Ingrese Email :");
