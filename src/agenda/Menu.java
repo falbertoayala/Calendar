@@ -31,11 +31,22 @@ public class Menu {
         System.out.println("-----------------------------");
         System.out.println("M E N U  P R I N C I P A L");
         System.out.println("1.) Ver Correos de Usuarios");
-        System.out.println("2.) Ingresar Evento");
-        System.out.println("3.) Consultar Evento");
+        System.out.println("2.) Ir a menu de eventos");
         System.out.println("4.) Salir");
         System.out.println("-----------------------------");
-        //int codigo = s.nextInt();
+        int codigo = s.nextInt();
+              
+     
+    }
+    public void imprimirMenuEventos(){
+        System.out.println("-----------------------------");
+        System.out.println("I N G R E S O  D E   E V E N T O S");
+        System.out.println("1.) Ingresar Eventos");
+        System.out.println("2.) Ver los Primeros Eventos");
+        System.out.println("3.) Ver todos los Eventos");
+        System.out.println("4.) Salir");
+        System.out.println("-----------------------------");
+        int codigo = s.nextInt();
               
      
     }
