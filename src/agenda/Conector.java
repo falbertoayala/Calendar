@@ -87,8 +87,7 @@ import org.sqlite.SQLiteDataSource;
         String query = "select  userEmail from user ";
         PreparedStatement consulta = null;
         ResultSet resultadotabla = null;
-        //String w = "";
-        //StringBuilder tabla = new StringBuilder(w);
+        
         
         try{
             consulta = conn.prepareStatement(query);
@@ -136,11 +135,11 @@ import org.sqlite.SQLiteDataSource;
     
     //CODIGO QUE INSERTA EVENTOS
     
-    public int insertarEventos(String eventName, String eventStart, String eventEnd){
+    public int insertarEventos(String usermail,String eventName, String eventStart,String eventHorIn, String eventEnd, String eventHorFin){
         conn = connectDB();
         String query = " insert into events "
-                + "(eventName, eventStart, eventEnd)" + 
-                " values (?,?,?) ";
+                + "(eventName, eventStart, eventEnd,eventHorIn,eventHorFin,usermail)" + 
+                " values (?,?,?,?,?,?) ";
         PreparedStatement preStmt =null;
         try {
             preStmt = conn.prepareStatement(query);
@@ -149,15 +148,12 @@ import org.sqlite.SQLiteDataSource;
             preStmt.setString(1, eventName);
             preStmt.setString(2, eventStart);
             preStmt.setString(3, eventEnd);
+            preStmt.setString(4, eventHorIn);
+            preStmt.setString(5, eventHorFin);
+            preStmt.setString(6, usermail);
                        
             preStmt.executeUpdate();
-            /*boolean result = preStmt.execute();
-            if(result){
-                return 0;
-            }
-            else{
-                return 1;
-            }*/
+            
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -190,11 +186,14 @@ import org.sqlite.SQLiteDataSource;
             consulta = conn.prepareStatement(query);
             consulta.setString(1, events);
             resultadotabla = consulta.executeQuery();
-            tabla.append("evento|\tfecha Inicio|\tfecha fin\n");
+            tabla.append("Evento|\tFecha Inicio|\tFecha fin|\tHora Inicio|\tHora fin|\tCorreo\n");
             while (resultadotabla.next()){
                 tabla.append(resultadotabla.getInt(1)).append("\t");
                 tabla.append(resultadotabla.getString(2)).append("\t");
-                tabla.append(resultadotabla.getString(3)).append("\n");
+                tabla.append(resultadotabla.getString(3)).append("\t");
+                tabla.append(resultadotabla.getString(4)).append("\t");
+                tabla.append(resultadotabla.getString(5)).append("\t");
+                tabla.append(resultadotabla.getString(6)).append("\n");
             }
             return tabla.toString();
         } catch (SQLException ex) {
@@ -204,8 +203,7 @@ import org.sqlite.SQLiteDataSource;
     }  
     
 
-
-
+    
 
 //CODIGO QUE INSERTA CORREO  
     
@@ -218,7 +216,7 @@ import org.sqlite.SQLiteDataSource;
         try {
             preStmt = conn.prepareStatement(query);
             
-            //preStmt.setInt(1, userId);
+            
             preStmt.setString(1, userMail);
             preStmt.setString(2, userName);
 

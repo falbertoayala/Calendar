@@ -29,9 +29,7 @@ public class Agenda {
         String correo = "";
         String nombre = "";
         String datos = "";
-        //String nomevent = "";
-        //String fechain = "";
-        //String fechaen = "";
+        
         System.out.println("B I E N V E N I D O   A   T U   A G E N D A   E L E C T R O N I C A");
         System.out.println("********************************************************************");
         Conector ck = new Conector();
@@ -39,6 +37,7 @@ public class Agenda {
         ckmail = leer.next();
         menu.getMailuser(ckmail);
         if (menu.getMailuser(ckmail) == true) {
+            System.out.println("Bienvenido" + ckmail);
             menu.imprimirMenuPrincipal();
 
         } else {
@@ -56,7 +55,7 @@ public class Agenda {
 
         do {
             menu.imprimirMenuPrincipal();
-            //menu.imprimirMenu();
+            
             System.out.print("Ingrese codigo>> ");
             opcion = leer.nextInt();
             switch (opcion) {
@@ -76,18 +75,27 @@ public class Agenda {
 
                                 Conector cn = new Conector();
                                 leer.nextLine();
-                                System.out.println("Ingresar asunto del evento :");
+                                
+                                System.out.println("Ingresar asunto del evento");
                                 String nomevent = leer.nextLine();
                                 System.out.print("Ingresa fecha de Inicio :");
                                 String fechain = leer.nextLine();
                                 System.out.print("Ingresa fecha final :");
                                 String fechafin = leer.nextLine();
-                                cn.insertarEventos(nomevent, fechain, fechafin);
+                                System.out.print("Hora de Inicio :");
+                                String horain = leer.nextLine();
+                                System.out.print("Hora Final :");
+                                String horafin = leer.nextLine();
+                                System.out.println("Ingrese su correo");
+                                String correuser = leer.nextLine();
+                                                                                                
+                                cn.insertarEventos( nomevent, fechain, fechafin, horain, horafin,correuser);
                                 break;
 
                             case 2:
-                                Conector cn = new Conector();
                                 
+                                 
+                    
 
                                 break;
                         }
@@ -106,31 +114,4 @@ public class Agenda {
     }
 }
 
-/*case 2:
-                    
-                     Conector cn = new Conector();
-                            leer.nextLine();
-                            System.out.println("Ingresar asunto del evento :");
-                            String nomevent = leer.nextLine();
-                            System.out.print("Ingresa fecha de Inicio :");
-                            String fechain = leer.nextLine();
-                            System.out.print("Ingresa fecha final :");
-                            String fechafin = leer.nextLine();
-                            cn.insertarEventos(nomevent, fechain,fechafin);
-                            break;
-                                        
-                            break;
-                    
 
-
- case 3:
-                    
-                   /* Conector cn = new Conector();
-                    leer.nextLine();
-                    int id = '0';
-                    System.out.println("Ingrese Email :");
-                    String email = leer.nextLine();
-                    System.out.print("Ingrese su Nombre :");
-                    String name = leer.nextLine();
-                    cn.insertarUsuarios(email, name);
- */
