@@ -24,6 +24,7 @@ public class Agenda {
         Scanner leer = new Scanner(System.in);
         Menu menu = new Menu();
         Menu menu2 = new Menu();
+        Conector conector2 = new Conector();
 
         String ckmail = "";
         String correo = "";
@@ -37,7 +38,7 @@ public class Agenda {
         ckmail = leer.next();
         menu.getMailuser(ckmail);
         if (menu.getMailuser(ckmail) == true) {
-            System.out.println("Bienvenido" + ckmail);
+            System.out.println("Bienvenido");
             menu.imprimirMenuPrincipal();
 
         } else {
@@ -74,6 +75,7 @@ public class Agenda {
                             case 1:
 
                                 Conector cn = new Conector();
+                                correo enviar = new correo();
                                 leer.nextLine();
                                 
                                 System.out.println("Ingresar asunto del evento");
@@ -90,13 +92,14 @@ public class Agenda {
                                 String correuser = leer.nextLine();
                                                                                                 
                                 cn.insertarEventos( nomevent, fechain, fechafin, horain, horafin,correuser);
+                                //enviar.enviar(correo, datos, fechafin);
+                                
                                 break;
 
                             case 2:
                                 
                                  
-                    
-
+                                System.out.println("Disponible Proximamente");
                                 break;
                         }
                     } while (opcion != 4);

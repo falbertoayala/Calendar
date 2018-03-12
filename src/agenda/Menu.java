@@ -43,7 +43,7 @@ public class Menu {
         System.out.println("I N G R E S O  D E   E V E N T O S");
         System.out.println("1.) Ingresar Eventos");
         System.out.println("2.) Ver los Primeros Eventos");
-        System.out.println("3.) Ver todos los Eventos");
+        
         System.out.println("4.) Salir");
         System.out.println("-----------------------------");
         int codigo = s.nextInt();
@@ -59,6 +59,8 @@ public class Menu {
         return resultado;
     }
     
+    
+    
     public String getUseremails(String Useremails){
         Conector emp = new Conector();
         String resultado =emp.getInformacionTablauser(Useremails);
@@ -72,7 +74,11 @@ public class Menu {
         
     
     }
-   
-    
-    
+   public String getEventos(String evento){
+        Conector emp = new Conector();
+        String resultado = emp.getTablaEvent(evento);
+        return resultado;
+   }
 }
+    
+

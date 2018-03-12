@@ -173,7 +173,7 @@ import org.sqlite.SQLiteDataSource;
     }
     
       //CODIGO QUE CONSULTA AGENDA 
-    public String getTablaEvent(String events){
+    public String getTablaEvent(String event){
         
         conn = connectDB();
         String query = " select * from events";
@@ -184,7 +184,7 @@ import org.sqlite.SQLiteDataSource;
         
         try{
             consulta = conn.prepareStatement(query);
-            consulta.setString(1, events);
+            consulta.setString(1, event);
             resultadotabla = consulta.executeQuery();
             tabla.append("Evento|\tFecha Inicio|\tFecha fin|\tHora Inicio|\tHora fin|\tCorreo\n");
             while (resultadotabla.next()){
