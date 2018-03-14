@@ -60,6 +60,7 @@ import org.sqlite.SQLiteDataSource;
         PreparedStatement consulta = null;
         ResultSet resultadotabla = null;
         String w = "";
+        PreparedStatement preStmt =null;
         StringBuilder tabla = new StringBuilder(w);
         
         try{
@@ -76,6 +77,20 @@ import org.sqlite.SQLiteDataSource;
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    
+            finally {
+            try {
+                if (preStmt != null) {
+                    preStmt.close();
+                }
+                if (conn != null) {
+                    disconnectDB(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return tabla.toString();
     }
     
@@ -87,6 +102,7 @@ import org.sqlite.SQLiteDataSource;
         String query = "select  userEmail from user ";
         PreparedStatement consulta = null;
         ResultSet resultadotabla = null;
+        PreparedStatement preStmt =null;
         
         
         try{
@@ -102,6 +118,18 @@ import org.sqlite.SQLiteDataSource;
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally {
+            try {
+                if (preStmt != null) {
+                    preStmt.close();
+                }
+                if (conn != null) {
+                    disconnectDB(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return false;
     }
     
@@ -112,7 +140,7 @@ import org.sqlite.SQLiteDataSource;
         ResultSet resultadotabla = null;
         String w = "";
         StringBuilder tabla = new StringBuilder(w);
-        
+        PreparedStatement preStmt =null;
         try{
             consulta = conn.prepareStatement(query);
             resultadotabla = consulta.executeQuery();
@@ -126,6 +154,18 @@ import org.sqlite.SQLiteDataSource;
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally {
+            try {
+                if (preStmt != null) {
+                    preStmt.close();
+                }
+                if (conn != null) {
+                    disconnectDB(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return tabla.toString();
     }
 
@@ -135,7 +175,7 @@ import org.sqlite.SQLiteDataSource;
     
     //CODIGO QUE INSERTA EVENTOS
     
-    public int insertarEventos(String usermail,String eventName, String eventStart,String eventHorIn, String eventEnd, String eventHorFin){
+    public int insertarEventos(String eventName, String eventStart, String eventEnd,String eventHorIn, String eventHorFin,String usermail){
         conn = connectDB();
         String query = " insert into events "
                 + "(eventName, eventStart, eventEnd,eventHorIn,eventHorFin,usermail)" + 
@@ -173,34 +213,89 @@ import org.sqlite.SQLiteDataSource;
     }
     
       //CODIGO QUE CONSULTA AGENDA 
-    public String getTablaEvent(String event){
+     public boolean getEvetoTablaevents(String events){
         
         conn = connectDB();
-        String query = " select * from events";
+        String query = "select  eventName from events ";
+        PreparedStatement consulta = null;
+        ResultSet resultadotabla = null;
+        PreparedStatement preStmt =null;
+        
+        
+        try{
+            consulta = conn.prepareStatement(query);
+            resultadotabla = consulta.executeQuery();
+                while (resultadotabla.next()){
+                if(events.equals(resultadotabla.getString(1))){
+                    return  true ;
+                }
+
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                if (preStmt != null) {
+                    preStmt.close();
+                }
+                if (conn != null) {
+                    disconnectDB(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+    
+    public String getInformacionTablaevents(){
+        conn = connectDB();
+        String query = "select eventId, eventName,eventStart, eventEnd,eventHorIn,eventHorFin,usermail from events;";
         PreparedStatement consulta = null;
         ResultSet resultadotabla = null;
         String w = "";
         StringBuilder tabla = new StringBuilder(w);
-        
+        PreparedStatement preStmt =null;
         try{
             consulta = conn.prepareStatement(query);
-            consulta.setString(1, event);
             resultadotabla = consulta.executeQuery();
-            tabla.append("Evento|\tFecha Inicio|\tFecha fin|\tHora Inicio|\tHora fin|\tCorreo\n");
+            tabla.append("Id Evento|\tNombre Evento|\tFecha Inicio\tFecha Fin|\tHora Inicio|\tHoraFin|\tCorreo \n");
             while (resultadotabla.next()){
                 tabla.append(resultadotabla.getInt(1)).append("\t");
                 tabla.append(resultadotabla.getString(2)).append("\t");
                 tabla.append(resultadotabla.getString(3)).append("\t");
                 tabla.append(resultadotabla.getString(4)).append("\t");
                 tabla.append(resultadotabla.getString(5)).append("\t");
-                tabla.append(resultadotabla.getString(6)).append("\n");
+                tabla.append(resultadotabla.getString(6)).append("\t");
+                tabla.append(resultadotabla.getString(7)).append("\t\n");
+                //tabla.append(resultadotabla.getString(8)).append("\t \n");
+                
             }
             return tabla.toString();
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally {
+            try {
+                if (preStmt != null) {
+                    preStmt.close();
+                }
+                if (conn != null) {
+                    disconnectDB(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return tabla.toString();
-    }  
+    }
+
+   String getInformacionTablaevents(String events) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
     
 
     

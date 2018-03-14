@@ -61,7 +61,7 @@ public class Agenda {
             opcion = leer.nextInt();
             switch (opcion) {
                 case 1:
-
+                    
                     System.out.println(menu.getAllEmails());
                     break;
 
@@ -98,8 +98,8 @@ public class Agenda {
 
                             case 2:
                                 
-                                 
-                                System.out.println("Disponible Proximamente");
+                                System.out.println(conector2.getInformacionTablaevents());
+                                
                                 break;
                         }
                     } while (opcion != 4);
